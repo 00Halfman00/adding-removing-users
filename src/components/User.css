@@ -1,0 +1,14 @@
+li {
+  list-style: none;
+  margin: 1rem 0;
+  padding: 1rem;
+  border-radius: 12px;
+  box-shadow: 0 0.1px 18px rgba(0, 0, 0, 1);;
+  width: auto;
+  background-color: lightgray;
+}
+
+li:hover {
+  background-color: darkgray;
+  color: white;
+}
