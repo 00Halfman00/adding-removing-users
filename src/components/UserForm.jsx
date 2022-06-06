@@ -16,11 +16,12 @@ function UserForm(props) {
   }
 
   function addPersonHandler(ev) {
-    console.log('clicked');
+    //console.log('clicked');
     ev.preventDefault(); // this is a problem if you don't write this line here
     const tmp1 = name;
     const tmp2 = age;
-    if (name && age) {
+    console.log(age)
+    if (name && age && age > 0) {
       nameInputRef.current.value = '';
       ageInputRef.current.value = '';
       setName('');
@@ -31,31 +32,29 @@ function UserForm(props) {
         age: tmp2,
       });
     }
-    if(!name || !age){
+    if ((!name || !age) || (age[0] === '-' && name[0])) {
       props.setFlag(false);
     }
   }
 
   return (
-    <div className="div-form">
-      <form onSubmit={addPersonHandler} className="form-container">
-        <label className="form-label">name</label>
-        <input
-          ref={nameInputRef}
-          onChange={handleChange}
-          className="form-input"
-          placeholder="..."
-        ></input>
-        <label className="form-label">age</label>
-        <input
-          ref={ageInputRef}
-          onChange={handleAge}
-          className="form-input"
-          placeholder="..."
-        ></input>
-        <button className="form-button">add user</button>
-      </form>
-    </div>
+    <form onSubmit={addPersonHandler} className="form-container">
+      <label className="form-label">name</label>
+      <input
+        ref={nameInputRef}
+        onChange={handleChange}
+        className="form-input"
+        placeholder="..."
+      ></input>
+      <label className="form-label">age</label>
+      <input
+        ref={ageInputRef}
+        onChange={handleAge}
+        className="form-input"
+        placeholder="..."
+      ></input>
+      <button className="form-button">add user</button>
+    </form>
   );
 }
 

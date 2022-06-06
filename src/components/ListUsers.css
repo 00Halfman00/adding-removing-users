@@ -1,18 +1,25 @@
-.list-users-div {
-  display: flex;
-  display: column;
-  justify-content: center;
-
-}
-
 .list-users-ul {
   border-radius: 12px;
   box-shadow: 0 0.1px 18px rgba(0, 0, 0, 1);;
   margin: 1rem;
-  width: 100%;
-  padding: .5rem;
+  padding: 1rem .5rem;
+  width: 50%;
+  padding: 1rem .5rem;
 }
 
 .users-title {
   color: dodgerblue;
+  padding-left: 1rem;
+}
+
+@media (max-width: 900px) {
+  .list-users-ul {
+    width: 70%;
+  }
+}
+
+@media (max-width: 600px) {
+  .list-users-ul {
+    width: 95%;
+  }
 }

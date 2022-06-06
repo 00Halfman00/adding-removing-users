@@ -2,18 +2,29 @@ import React, { useState } from 'react';
 import UserForm from './components/UserForm';
 import ListUsers from './components/ListUsers';
 import Modal from './components/Modal';
+import Overlay from './components/Overlay';
 import './App.css';
 
 function App(props) {
   const [users, setUsers] = useState([
-    { id: 'a1', name: 'Rex', age: 0 },
-    { id: 'b2', name: 'Hamburglar', age: 1 },
+    { id: 'a1', name: 'Rex', age: 10 },
+    { id: 'b2', name: 'Hamburglar', age: 50 },
     { id: 'c3', name: 'Dragon Fly Jones', age: 500 },
   ]);
-  const [flag, setFlag] = useState(true);
+  const [redflag, setFlag] = useState(true);
+  const [blueFlag, setBlueFlag] = useState(true);
+  const [text, setText] = useState(props.text);
+
+  function showForm(){
+    setBlueFlag(!blueFlag);
+    if(text === 'ADD USER'){
+      setText('REMOVE FORM')
+    } else setText(props.text)
+  }
+
   function addUserHandler(guy) {
     if (typeof guy === 'object') {
-      console.log('guy')
+      console.log('guy');
       setFlag(true);
       setUsers(() => {
         return [guy, ...users];
@@ -31,17 +42,20 @@ function App(props) {
     setUsers(tmp);
   }
 
-  let content = flag ? (
+  let content = redflag ? (
     <div className="app-div">
-      <h2>{props.text}</h2>
-      <UserForm addUser={addUserHandler} setFlag={setFlag} />
+      <h2 onClick={showForm} className="title">{text}</h2>
+      {blueFlag ? '' : <UserForm addUser={addUserHandler} setFlag={setFlag} />}
       <ListUsers remove={removeHandler} users={users} />
     </div>
-  ) :
-  (<Modal setFlag={setFlag}/>);
-  //(<h1 onClick={() => setFlag(true)}>Stop screwing around</h1>);
+  ) : (
+    <div>
+      <Overlay setFlag={setFlag} />
+      <Modal setFlag={setFlag} />
+    </div>
+  );
 
-  return {...content}
+  return { ...content };
 
   /*
   return (

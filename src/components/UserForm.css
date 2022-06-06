@@ -8,6 +8,7 @@
   display: flex;
   flex-direction: column;
   width: 50%;
+  margin: 1rem;
   padding: 1rem .5rem;
   align-items: center;
   border-radius: 12px;
@@ -19,16 +20,18 @@
   font-size: larger;
   margin: .25rem 0;
   border-radius: 6px;
-  padding: .5rem 0;
 }
 
 .form-label {
   color: dodgerblue;
-  padding-left: 1.5rem;
+  padding-left: 2rem;
+  padding-bottom: .5rem;
 }
 
 .form-button {
-  margin-top: 1rem;
+  margin: 1rem;
+  padding: 1rem;
+  width: 99%;
   background: goldenrod;
   border-radius: 8px;
   border: 0;
@@ -36,13 +39,26 @@
 }
 
 .form-input {
-  box-shadow: 0 0.1px 18px rgba(0, 0, 0, 1);;
-  padding-left: 1rem;
+  box-shadow: 0 0.1px 18px rgba(0, 0, 0, 1);
+  margin: 0 1rem 1rem 1rem;
+  padding: 1rem .5rem;
   width: 97%;
   border: none;
   border-radius: 8px;;
 }
 
 .form-input:hover {
-  background-color: powderblue;
+  background-color: lightcyan;
+}
+
+@media (max-width: 900px) {
+  .form-container {
+    width: 70%;
+  }
+}
+
+@media (max-width: 600px) {
+  .form-container {
+    width: 95%;
+  }
 }
