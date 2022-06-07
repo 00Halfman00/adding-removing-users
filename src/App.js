@@ -7,7 +7,6 @@ import Card from './components/UI/Card';
 import styles from './App.module.css';
 
 function App(props) {
-  console.log(props)
   const [users, setUsers] = useState([
     { id: 'a1', name: 'Rex', age: 10 },
     { id: 'b2', name: 'Hamburglar', age: 50 },
@@ -27,7 +26,6 @@ function App(props) {
 
   function addUserHandler(guy) {
     if (typeof guy === 'object') {
-      console.log('guy');
       setFlag(true);
       setUsers(() => {
         return [guy, ...users];

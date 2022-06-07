@@ -8,7 +8,6 @@ function UserForm(props) {
   const ageInputRef = useRef();
 
   function handleChange(ev) {
-    console.log(typeof ev.target.value)
     setName(ev.target.value);
   }
 
@@ -20,7 +19,6 @@ function UserForm(props) {
     ev.preventDefault(); // this is a problem if you don't write this line here
     const tmp1 = name;
     const tmp2 = age;
-    console.log(age);
     if ((name && age) && (age > 0)) {
       nameInputRef.current.value = '';
       ageInputRef.current.value = '';
