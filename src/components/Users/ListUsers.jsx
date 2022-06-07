@@ -1,11 +1,11 @@
 import React from 'react';
 import User from './User';
-import './ListUsers.css';
+import styles from './ListUsers.module.css';
 
 function ListUsers(props) {
   return (
-    <ul className="list-users-ul">
-      <h3 className="users-title">Users: </h3>
+    <ul className={styles['list-users-ul']}>
+      <h3 className={styles['users-title']}>Users: </h3>
       {props.users.map((user) => (
         <User
           remove={props.remove}

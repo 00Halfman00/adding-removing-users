@@ -1,5 +1,5 @@
 import React, { useState, useRef } from 'react';
-import './UserForm.css';
+import styles from './UserForm.module.css';
 
 function UserForm(props) {
   const [name, setName] = useState();
@@ -8,20 +8,20 @@ function UserForm(props) {
   const ageInputRef = useRef();
 
   function handleChange(ev) {
+    console.log(typeof ev.target.value)
     setName(ev.target.value);
   }
 
   function handleAge(ev) {
-    setAge(ev.target.value);
+    setAge(+ev.target.value);
   }
 
   function addPersonHandler(ev) {
-    //console.log('clicked');
     ev.preventDefault(); // this is a problem if you don't write this line here
     const tmp1 = name;
     const tmp2 = age;
-    console.log(age)
-    if (name && age && age > 0) {
+    console.log(age);
+    if ((name && age) && (age > 0)) {
       nameInputRef.current.value = '';
       ageInputRef.current.value = '';
       setName('');
@@ -32,28 +32,30 @@ function UserForm(props) {
         age: tmp2,
       });
     }
-    if ((!name || !age) || (age[0] === '-' && name[0])) {
-      props.setFlag(false);
+    if (!name || !age || age < 1) {
+      props.setFlag(null);
     }
   }
 
   return (
-    <form onSubmit={addPersonHandler} className="form-container">
-      <label className="form-label">name</label>
-      <input
+    <form onSubmit={addPersonHandler} className={styles["form-container"]}>
+      <label className={styles["form-label"]}>name</label>
+      <input type='text'
         ref={nameInputRef}
         onChange={handleChange}
-        className="form-input"
+        className={styles["form-input"]}
         placeholder="..."
       ></input>
-      <label className="form-label">age</label>
-      <input
+      <label className={styles["form-label"]}>age</label>
+      <input type='number'
         ref={ageInputRef}
         onChange={handleAge}
-        className="form-input"
+        className={styles["form-input"]}
         placeholder="..."
       ></input>
-      <button className="form-button">add user</button>
+      <div className={styles['form-button-div']}>
+        <button type='submit' className={styles["form-button"]}>add user</button>
+      </div>
     </form>
   );
 }

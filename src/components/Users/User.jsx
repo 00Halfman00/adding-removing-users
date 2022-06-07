@@ -1,13 +1,12 @@
 import React from 'react';
-import './User.css';
+import styles from './User.module.css';
 
 function User(props) {
-  //console.log(props)
   function removeUser() {
     props.remove(props.id);
   }
 
-  return <li onClick={removeUser}>{props.children}</li>;
+  return <li className={styles['user-li']} onClick={removeUser}>{props.children}</li>;
 }
 
 export default User;

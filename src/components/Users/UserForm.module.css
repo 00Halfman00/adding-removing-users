@@ -7,12 +7,17 @@
 .form-container {
   display: flex;
   flex-direction: column;
-  width: 50%;
+  width: 100%;
   margin: 1rem;
-  padding: 1rem .5rem;
+  padding: 0 .5rem;
   align-items: center;
   border-radius: 12px;
   box-shadow: 0 0.1px 18px rgba(0, 0, 0, 1);
+}
+
+.form-button-div {
+  width: 100%;
+  align-items: flex-start;
 }
 
 .form-label, .form-input, .form-button {
@@ -29,9 +34,9 @@
 }
 
 .form-button {
-  margin: 1rem;
+  margin: 1rem .25rem;
+  width: auto;
   padding: 1rem;
-  width: 99%;
   background: goldenrod;
   border-radius: 8px;
   border: 0;
