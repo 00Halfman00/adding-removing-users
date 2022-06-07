@@ -7,9 +7,9 @@
 }
 
 .modal-div {
-  width: 50%;
+  width: 70%;
   margin: 1rem;
-  padding: 0.5rem;
+  text-align: center;
   border-radius: 12px;
   box-shadow: 0 0.1px 18px rgba(0, 0, 0, 1);
   z-index: 10;
@@ -32,9 +32,21 @@
 }
 
 .modal-p {
-  margin: 0.75rem;
-  padding: 0.5rem;
-  font-size: large;
+  margin: 1rem;
+  padding: 1rem;
+  font-size: medium;
+}
+
+.modal-header {
+  width: 100%;
+  background-color: dodgerblue;
+  padding: 1.5rem 0;
+  border-radius: 12px 12px 0 0;
+
+}
+
+.modal-h2 {
+  color: white;
 }
 
 @media (max-width: 900px) {

@@ -13,9 +13,10 @@ function App(props) {
     { id: 'b2', name: 'Hamburglar', age: 50 },
     { id: 'c3', name: 'Dragon Fly Jones', age: 500 },
   ]);
-  const [redflag, setFlag] = useState(true);
+  const [redflag, setFlag] = useState(false);
   const [blueFlag, setBlueFlag] = useState(true);
   const [text, setText] = useState(props.text);
+  const [error, setError] = useState();
 
   function showForm(){
     setBlueFlag(!blueFlag);
@@ -44,16 +45,16 @@ function App(props) {
     setUsers(tmp);
   }
 
-  let content = redflag ? (
+  let content = !redflag ? (
     <div className={styles["app-div"]}>
       <h2 onClick={showForm} className={styles["title"]}>{text}</h2>
-      {blueFlag ? '' : <UserForm addUser={addUserHandler} setFlag={setFlag} />}
+      {blueFlag ? '' : <UserForm addUser={addUserHandler} setFlag={setFlag} setError={setError}/>}
       <ListUsers remove={removeHandler} users={users} />
     </div>
   ) : (
     <div className={styles['overlay-modal-div']}>
       <Overlay setFlag={setFlag} />
-      <Modal setFlag={setFlag} />
+      <Modal setFlag={setFlag} error={error}/>
     </div>
   );
 

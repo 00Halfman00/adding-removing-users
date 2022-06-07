@@ -31,9 +31,21 @@ function UserForm(props) {
         name: tmp1,
         age: tmp2,
       });
+      props.setFlag(null)
     }
-    if (!name || !age || age < 1) {
-      props.setFlag(null);
+    if (!name && !age) {
+      props.setError("Enter both name and age");
+      props.setFlag(true);
+      return;
+    }
+    if (!name || !age) {
+      props.setError("Fill in the empty field");
+      props.setFlag(true);
+    }
+    if (age < 1) {
+      props.setError("Age needs to be a positive integer");
+      props.setFlag(true);
+      return;
     }
   }
 
